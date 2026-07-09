@@ -2,11 +2,11 @@ package se.lexicon;
 
 public class ParkingSpot {
     private boolean isFree;
-    private final int number;
+    private final int spotId;
 
     public ParkingSpot( int number) {
         this.isFree = true;
-        this.number = number;
+        this.spotId = number;
     }
 
     public boolean isFree() {
@@ -17,8 +17,8 @@ public class ParkingSpot {
         isFree = free;
     }
 
-    public int getNumber() {
-        return number;
+    public int getSpotId() {
+        return spotId;
     }
 
     public void free() {
