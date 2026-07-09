@@ -1,5 +1,7 @@
 package se.lexicon;
 
+import java.util.Objects;
+
 public class Person {
     private String name;
     private String phoneNumber;
@@ -20,6 +22,10 @@ public class Person {
         this.name = name;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public void setPhoneNumber(String phoneNumber) {
         if (phoneNumber == null || phoneNumber.isBlank()) {
             throw new IllegalArgumentException("Phone number cannot be empty.");
@@ -36,5 +42,21 @@ public class Person {
 
     public void setPersonType(PersonType personType) {
         this.personType = personType;
+    }
+
+    public PersonType getPersonType() {
+        return personType;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Person person = (Person) o;
+        return Objects.equals(name, person.name) && Objects.equals(phoneNumber, person.phoneNumber) && Objects.equals(vehicleRegistration, person.vehicleRegistration) && personType == person.personType;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, phoneNumber, vehicleRegistration, personType);
     }
 }
